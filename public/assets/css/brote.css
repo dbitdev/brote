@@ -2,9 +2,17 @@
 /* Todas las rejillas de fichas: 1 columna en móvil, 2 en tablet, 3 en escritorio.
    Con flex, una última fila incompleta queda centrada en lugar de dejar un hueco. */
 .flexible-grid-section .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.flexible-grid-section .grid .card { flex: 0 0 100%; }
-@media (min-width: 640px) {
-  .flexible-grid-section .grid .card { flex-basis: calc((100% - 20px) / 2); }
+/* 2 columnas en celular y tablet */
+.flexible-grid-section .grid .card { flex: 0 0 calc((100% - 20px) / 2); min-width: 0; }
+@media (max-width: 639px) {
+  .flexible-grid-section .grid { gap: 12px; }
+  .flexible-grid-section .grid .card { flex-basis: calc((100% - 12px) / 2); padding: 16px 14px 56px; border-radius: 16px; }
+  .flexible-grid-section .grid .card .icon { max-width: 44px; max-height: 34px; margin-bottom: 16px; }
+  .flexible-grid-section .grid .card h4 { font-size: 16px; line-height: 21px; margin-bottom: 8px; overflow-wrap: break-word; hyphens: manual; }
+  .flexible-grid-section .grid .card .description { padding-bottom: 0; margin-bottom: 0; }
+  .flexible-grid-section .grid .card .description p { font-size: 13px !important; line-height: 19px !important; }
+  .flexible-grid-section .grid .card p.link { left: 14px; bottom: 16px; font-size: 13px; }
+  .flexible-grid-section .grid .card p.link:after { margin-left: 10px; font-size: 18px; }
 }
 @media (min-width: 1024px) {
   .flexible-grid-section .grid .card { flex-basis: calc((100% - 40px) / 3); }
