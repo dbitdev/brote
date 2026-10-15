@@ -149,23 +149,28 @@ save("50-pattern-right.svg", 183, 340, slanted_lines(183, 340, True))
 
 
 # ---------- Olas del footer ----------
-def footer_wave(w, h):
-    s = w / 1440
-    def p(x, y):
-        return f"{x * s:.1f},{y:.1f}"
-    body = (f'<defs>{grad("a", NAVY, FOREST, True)}{grad("b", GREEN, GREEN_SOFT, True)}{grad("c", FOREST, GREEN, True)}</defs>'
-            f'<path d="M0 0H{w}V300C{w * 0.86:.0f} 360 {w * 0.66:.0f} 300 {w * 0.48:.0f} 230C{w * 0.3:.0f} 165 {w * 0.12:.0f} 160 0 215Z" fill="url(#a)"/>'
-            f'<path d="M{w * 0.35:.0f} 120C{w * 0.6:.0f} 240 {w * 0.85:.0f} 330 {w} 310V140Z" fill="url(#b)" opacity="0.5"/>'
-            f'<path d="M0 60C{w * 0.25:.0f} 110 {w * 0.6:.0f} 130 {w} 70V0H0Z" fill="url(#c)" opacity="0.45"/>'
-            f'<g fill="none" stroke="#fff" stroke-width="1" opacity="0.3">')
-    for i in range(10):
-        y = 90 + i * 16
-        body += (f'<path d="M0 {y + 40}C{w * 0.22:.0f} {y - 10 - i * 4} {w * 0.45:.0f} {y + 20} {w * 0.7:.0f} {y + 60 + i * 3}'
-                 f'S{w * 0.95:.0f} {y + 50} {w} {y + 10}"/>')
-    return body + "</g>"
+# Franja curva: verde arriba y azul petróleo debajo, con textura de puntos y fondo transparente.
+def footer_wave(w, h, dot_step=9):
+    def P(u, v):
+        return f"{u * w:.1f} {v * h:.1f}"
+    top = f"M{P(0, 0.02)} C{P(0.3, 0.22)} {P(0.72, 0.3)} {P(1, 0.08)}"
+    green_bottom = f"L{P(1, 0.74)} C{P(0.78, 0.66)} {P(0.55, 0.42)} {P(0.32, 0.44)} C{P(0.18, 0.45)} {P(0.07, 0.55)} {P(0, 0.62)} Z"
+    outer_bottom = f"L{P(1, 0.98)} C{P(0.8, 0.95)} {P(0.6, 0.68)} {P(0.32, 0.6)} C{P(0.18, 0.56)} {P(0.07, 0.68)} {P(0, 0.8)} Z"
+    body = (
+        "<defs>"
+        f'<linearGradient id="fondo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{NAVY}"/><stop offset="0.55" stop-color="#1d6a57"/><stop offset="1" stop-color="{FOREST}"/></linearGradient>'
+        f'<linearGradient id="verde" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{FOREST}"/><stop offset="1" stop-color="{GREEN}"/></linearGradient>'
+        f'<pattern id="puntos" width="{dot_step}" height="{dot_step}" patternUnits="userSpaceOnUse"><circle cx="{dot_step / 2}" cy="{dot_step / 2}" r="1.1" fill="#fff"/></pattern>'
+        f'<clipPath id="franja"><path d="{top} {outer_bottom}"/></clipPath>'
+        "</defs>"
+        f'<path d="{top} {outer_bottom}" fill="url(#fondo)"/>'
+        f'<path d="{top} {green_bottom}" fill="url(#verde)"/>'
+        f'<rect width="{w}" height="{h}" fill="url(#puntos)" opacity="0.22" clip-path="url(#franja)"/>'
+    )
+    return body
 
 save("footer-wave-desktop.svg", 1440, 416, footer_wave(1440, 416))
-save("footer-wave-mobile.svg", 375, 160, footer_wave(375, 160))
+save("footer-wave-mobile.svg", 375, 160, footer_wave(375, 160, 7))
 
 print("SVGs generados en", os.path.abspath(OUT))
 
