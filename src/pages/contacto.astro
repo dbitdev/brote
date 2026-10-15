@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavedHero from "../components/sections/WavedHero.astro";
+import { site } from "../data/site.js";
+
+const field = (name, label, opts = {}) => ({ name, label, ...opts });
+---
+<Layout title="Contáctanos" bodyClass="page page-template-default" description="Contacta a Brote y cuéntanos qué quieres hacer crecer. Agencia digital para fabricantes, distribuidores y agroindustrias en México.">
+  <div class="grid-container page-container default-page">
+    <WavedHero title="Contáctanos" subtitle="Cuéntanos qué reto comercial quieres resolver" image="/assets/photos/hero-vinedo.jpg" />
+
+    <section class="contact-section">
+      <div class="inner-section">
+        <div class="contact-form">
+          <h2>Contáctanos</h2>
+          <div class="wpcf7">
+            <form class="wpcf7-form init brote-form" novalidate>
+              <div class="col-2">
+                  <label><span class="label">Nombre*</span><span class="wpcf7-form-control-wrap"><input class="wpcf7-form-control wpcf7-text" type="text" name="nombre" required placeholder="Nombre" /></span></label>
+                  <label><span class="label">Apellido*</span><span class="wpcf7-form-control-wrap"><input class="wpcf7-form-control wpcf7-text" type="text" name="apellido" required placeholder="Apellido" /></span></label>
+              </div>
+              <div class="col-1">
+                <label><span class="label">Empresa</span><span class="wpcf7-form-control-wrap"><input class="wpcf7-form-control wpcf7-text" type="text" name="empresa" /></span></label>
+              </div>
+              <div class="col-2">
+                  <label><span class="label">Correo electrónico*</span><span class="wpcf7-form-control-wrap"><input class="wpcf7-form-control wpcf7-text wpcf7-email" type="email" name="email" required /></span></label>
+                  <label><span class="label">Teléfono*</span><span class="wpcf7-form-control-wrap"><input class="wpcf7-form-control wpcf7-text wpcf7-tel" type="tel" name="telefono" required /></span></label>
+              </div>
+              <div class="col-1">
+                <label><span class="label">Mensaje</span><span class="wpcf7-form-control-wrap"><textarea class="wpcf7-form-control wpcf7-textarea" name="mensaje" rows="6"></textarea></span></label>
+              </div>
+              <div class="beck-submit"><input type="submit" value="Enviar" class="wpcf7-form-control wpcf7-submit" /></div>
+              <div class="wpcf7-response-output" aria-hidden="true"></div>
+            </form>
+          </div>
+        </div>
+        <div class="contact-info">
+          <p class="upper-title">Escríbenos</p>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

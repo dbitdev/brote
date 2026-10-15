@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavedHero from "../components/sections/WavedHero.astro";
+import SplitRow from "../components/sections/SplitRow.astro";
+import FullImage from "../components/sections/FullImage.astro";
+import CardGrid from "../components/sections/CardGrid.astro";
+import CtaBox from "../components/sections/CtaBox.astro";
+import { articles } from "../data/articles.js";
+
+const cards = articles.slice(0, 3).map((a) => ({ href: `/noticias/${a.slug}/`, title: a.title, text: a.excerpt, link: "Leer más" }));
+---
+<Layout title="Productores agrícolas y canal" bodyClass="page page-template-default" description="Información para productores agrícolas y distribuidores que participan en programas operados por Brote en México.">
+  <div class="grid-container page-container default-page">
+    <WavedHero
+      title="Productores agrícolas y canal"
+      subtitle="Compartir experiencias reales agrega valor a tu negocio"
+      image="/assets/photos/hero-productores.jpg"
+    />
+
+    <SplitRow side="right" alt="Productora revisando plantas de jitomate en un invernadero de Querétaro" image="/assets/photos/productora-invernadero.jpg" eyebrow="Para productores" padding={90}>
+      <h2>Tu experiencia en el campo <span class="verde">cuenta</span></h2>
+      <p>¿Eres productor o distribuidor y Brote Ag te contactó como parte de un programa? Trabajamos en nombre de empresas del sector para conocer tu opinión, compartir información útil y conectarte con soluciones para tu operación.</p>
+      <p>Tu participación es voluntaria y la información que compartes se maneja de forma confidencial.</p>
+    </SplitRow>
+
+    <FullImage
+      image="/assets/photos/equipo-campo.jpg"
+      eyebrow="Lo que nos dicen"
+      quote="Los productores que participan en nuestros programas valoran que alguien escuche cómo trabajan realmente en su parcela."
+    />
+
+    <SplitRow side="left" alt="Productor y agrónomo revisando una milpa en Jalisco" image="/assets/photos/productor-asesor.jpg" eyebrow="Para el canal" padding={90}>
+      <h2>Distribuidores y <span class="verde">agrotiendas</span></h2>
+      <p>Apoyamos a la red de distribución con información de mercado, programas de demanda y herramientas para dar mejor servicio a los productores de su región.</p>
+    </SplitRow>
+
+    <CardGrid eyebrow="Recursos destacados" cards={cards} position="top" padding={90} />
+
+    <CtaBox />
+  </div>
+</Layout>

@@ -1,0 +1,84 @@
+---
+import "@fontsource/urbanist/300.css";
+import "@fontsource/urbanist/400.css";
+import "@fontsource/urbanist/500.css";
+import "@fontsource/urbanist/600.css";
+import "@fontsource/urbanist/700.css";
+import "@fontsource/lora/400-italic.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site.js";
+
+const {
+  title,
+  description = site.description,
+  bodyClass = "page",
+  headerTheme = "light",
+  image = "/assets/media/og-brote.jpg",
+  noindex = false,
+  schema,
+} = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : site.title;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Brote",
+  alternateName: "Brote Ag",
+  description: site.description,
+  url: site.url,
+  logo: new URL("/assets/media/brote-logo-petroleo.png", Astro.site).href,
+  image: ogImage,
+  email: site.email,
+  areaServed: { "@type": "Country", name: "México" },
+  knowsAbout: ["Marketing agrícola", "Agronegocios", "Marketing digital", "Analítica de datos", "CRM"],
+  sameAs: Object.values(site.social),
+};
+---
+<!doctype html>
+<html lang="es-MX" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#003e51" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Brote, agencia digital para el campo mexicano" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" href="/assets/media/brote-icono-32.png" sizes="32x32" />
+    <link rel="icon" href="/assets/media/brote-icono-192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/assets/media/brote-icono-180.png" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/slick.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/brote.css" />
+    <script type="application/ld+json" set:html={JSON.stringify(organization)} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+  <body class={bodyClass}>
+    <div id="site-wrap" class="site-wrap">
+      <div class="blur-background"></div>
+      <Header theme={headerTheme} />
+      <slot />
+      <Footer />
+    </div>
+    <script>
+      import "../scripts/main.js";
+    </script>
+  </body>
+</html>

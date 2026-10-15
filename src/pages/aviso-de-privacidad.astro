@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavedHero from "../components/sections/WavedHero.astro";
+import { site } from "../data/site.js";
+---
+<Layout title="Aviso de privacidad" bodyClass="page page-template-default" description="Aviso de privacidad de Brote: qué datos personales recabamos, para qué los usamos y cómo ejercer tus derechos ARCO.">
+  <div class="grid-container page-container default-page">
+    <WavedHero title="Aviso de privacidad" image="/assets/photos/hero-aerea.jpg" />
+    <div class="grid-container page-container blog">
+      <div class="inner-section">
+        <div class="top-content">
+          <div class="content col-7">
+            <p><strong>Texto de ejemplo: revísalo con tu asesor legal antes de publicar.</strong></p>
+            <h4>Responsable</h4>
+            <p>Brote Ag es responsable del tratamiento de los datos personales que nos proporcionas a través de este sitio, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.</p>
+            <h4>Datos que recabamos</h4>
+            <p>Nombre, empresa, correo electrónico y teléfono que compartes en nuestros formularios.</p>
+            <h4>Finalidad</h4>
+            <p>Responder tus solicitudes, enviarte información que pediste y dar seguimiento comercial.</p>
+            <h4>Derechos ARCO</h4>
+            <p>Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición escribiendo a <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

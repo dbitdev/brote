@@ -1,0 +1,15 @@
+---
+import { routes } from "../../data/site.js";
+const { title = "¿Tienes alguna pregunta?", text = "No dudes en escribirnos.", link = routes.contacto, linkLabel = "Contáctanos" } = Astro.props;
+---
+<section class="two-columns-widget">
+  <div class="inner-section" style="text-align: center">
+    <div class="column">
+      <div class="content">
+        <h2 style="text-align: left;">{title}</h2>
+        <p style="text-align: left;">{text}</p>
+      </div>
+      <a style="margin-top: 30px;" class="no-shape light" href={link}>{linkLabel}</a>
+    </div>
+  </div>
+</section>

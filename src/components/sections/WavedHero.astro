@@ -1,0 +1,18 @@
+---
+const { title, subtitle, image } = Astro.props;
+---
+<section id="waved-hero" class="waved-hero">
+  <div class="inner-hero">
+    <img src={image} alt="" class="hero-image" />
+    <img src="/assets/img/waved-dots-hero.svg" alt="" class="pattern-dots" />
+    <div class="overlay"></div>
+    <img src="/assets/img/waves-waved-hero-mobile.svg" alt="" class="waves-mobile" />
+    <img src="/assets/img/waves-waved-hero-desktop.svg" alt="" class="waves" />
+    <div class="content-hero">
+      <div class="hero-content">
+        <h1><span style="color: #ffffff;">{title}</span></h1>
+        {subtitle && <p><span style="color: #ffffff;">{subtitle}</span></p>}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SplitRow from "../components/sections/SplitRow.astro";
+import CardGrid from "../components/sections/CardGrid.astro";
+import FullImage from "../components/sections/FullImage.astro";
+import { services, routes } from "../data/site.js";
+import { articles } from "../data/articles.js";
+
+const slides = [
+  {
+    image: "/assets/photos/hero-soya.jpg",
+    title: "Publicidad y marketing para el campo",
+    text: "Somos la agencia digital del sector agrícola mexicano.",
+    href: routes.brtx,
+    cta: "Conoce BrtX™",
+  },
+  {
+    image: "/assets/photos/hero-vinedo.jpg",
+    title: "Tu estrategia, ejecutada en la parcela",
+    text: "¿Tus equipos de ventas, marketing y distribución trabajan con el mismo plan?",
+    href: routes.diseno,
+    cta: "Alinea a tu equipo",
+  },
+  {
+    image: "/assets/photos/hero-ganado.jpg",
+    title: "Llega al productor donde decide",
+    text: "Campañas en campo, en el mostrador, por WhatsApp y en digital, con un solo mensaje.",
+    href: routes.omnicanal,
+    cta: "Genera demanda",
+  },
+  {
+    image: "/assets/photos/hero-aerea.jpg",
+    title: "Datos que hacen crecer tu negocio",
+    text: "¿Sabes qué productor compra tus productos y en qué región?",
+    href: routes.datos,
+    cta: "Ordena tus datos",
+  },
+];
+
+const jumpLinks = [
+  { href: "#por-que-brote", label: "Por qué Brote" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#productores", label: "Productores y canal" },
+  { href: "#equipo", label: "Nuestro equipo" },
+];
+
+const serviceCards = services.map((s) => ({ href: s.href, icon: s.icon, title: s.title, text: s.summary }));
+const articleCards = articles.slice(0, 3).map((a) => ({
+  href: `/noticias/${a.slug}/`,
+  title: a.title,
+  text: a.excerpt,
+  link: "Leer más",
+}));
+---
+<Layout bodyClass="home page-template-page-home page" description="Brote es la agencia digital del sector agrícola de México. Estrategia comercial, datos, campañas y sitios web para las empresas que venden al campo.">
+  <div class="page-home">
+  <div class="grid-container page-container default-page">
+    <section id="hero-slider">
+      <div class="hero-slider">
+        {slides.map((s, i) => (
+          <div class="slide">
+            <img src="/assets/img/slider-hero-dots.svg" alt="" class="pattern-dots" />
+            <div class="overlay"></div>
+            <img src="/assets/img/slider-hero-mask-mobile.svg" alt="" class="waves-mobile" />
+            <img src="/assets/img/slider-hero-just-waves.svg" alt="" class="waves" />
+            <img class="mask bg-image" src={s.image} alt="" />
+            <div class="inner-section">
+              <div class="content">
+                <div class="hero-article">
+                  {i === 0 ? <h1>{s.title}</h1> : <p class="hero-title">{s.title}</p>}
+                  <p><span style="color: #ffffff;">{s.text}</span></p>
+                </div>
+                <a class="button light" href={s.href}>{s.cta}</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="jump-links desktop">
+        {jumpLinks.map((l) => (
+          <>
+            <a href={l.href}>{l.label}</a>
+            <img src="/assets/img/jump-link-divider.svg" alt="" class="jump-link-divider" />
+          </>
+        ))}
+      </div>
+      <ul uk-accordion class="jump-link-mobile">
+        <li>
+          <a class="uk-accordion-title" href="#">Ir a la sección:</a>
+          <div class="uk-accordion-content other-positions">
+            {jumpLinks.map((l) => <a class="no-shape light" href={l.href}>{l.label}</a>)}
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <SplitRow id="por-que-brote" side="left" image="/assets/photos/ganado-corral.jpg" alt="Ganado en un corral de Sonora" eyebrow="Por qué Brote" link={routes.acerca} linkLabel="Conoce Brote">
+      <h2>Resultados que se notan en el <span class="verde">campo</span></h2>
+      <p>Brote es una agencia digital dedicada al sector agrícola de México. Ayudamos a fabricantes de insumos, distribuidores, agroindustrias y empresas de maquinaria a ejecutar su estrategia comercial: llegar al productor correcto, con el mensaje correcto, en el momento del ciclo en que decide.</p>
+      <p>Conocemos el campo porque trabajamos en él. Combinamos estrategia, datos y marketing digital para que lo que se planea en la oficina se cumpla en la parcela.</p>
+    </SplitRow>
+
+    <CardGrid
+      id="servicios"
+      eyebrow="Servicios"
+      title='Todo lo que tu marca necesita para <span class="verde">crecer</span>'
+      intro="Con BrtX™, nuestro método de ejecución comercial, y una base digital sólida, acompañamos a tu empresa desde el plan hasta el resultado."
+      cards={serviceCards}
+    />
+    <p style="text-align: center; margin-top: -30px; padding-bottom: 60px;"><a class="no-shape light" href={routes.brtx}>Conoce el método BrtX™</a></p>
+
+    <SplitRow id="productores" side="right" image="/assets/photos/productor-asesor.jpg" alt="Productor y agrónomo revisando una milpa en Jalisco" eyebrow="Productores y canal" link={routes.productores} linkLabel="Saber más" padding={90}>
+      <h2>Escuchar al productor <span class="verde">agrega valor</span></h2>
+      <p>¿Eres productor o distribuidor y Brote se comunicó contigo como parte de un programa? Trabajamos en nombre de empresas del sector para conocer tu experiencia en campo, compartir información útil y acercarte soluciones para tu operación.</p>
+    </SplitRow>
+
+    <FullImage
+      id="equipo"
+      image="/assets/photos/equipo-campo.jpg"
+      eyebrow="Nuestro equipo"
+      quote="Agrónomos, analistas y creativos que hablan el idioma del campo y saben convertir un plan en ventas."
+      link={routes.equipo}
+      linkLabel="Conoce al equipo"
+    />
+
+    <CardGrid eyebrow="Artículos destacados" cards={articleCards} position="top" padding={90} />
+  </div>
+  </div>
+</Layout>

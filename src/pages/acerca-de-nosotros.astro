@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavedHero from "../components/sections/WavedHero.astro";
+import SplitRow from "../components/sections/SplitRow.astro";
+import MultiColumn from "../components/sections/MultiColumn.astro";
+import CtaBox from "../components/sections/CtaBox.astro";
+import { routes } from "../data/site.js";
+---
+<Layout title="Acerca de nosotros" bodyClass="page page-template-default" description="Conoce a Brote, la agencia digital especializada en el campo mexicano: quiénes somos, nuestra misión y los valores con los que trabajamos.">
+  <div class="grid-container page-container default-page">
+    <WavedHero title="Acerca de Brote Ag" subtitle="Mejoramos los resultados comerciales a través de la excelencia en la ejecución" image="/assets/photos/hero-vinedo.jpg" />
+
+    <SplitRow side="right" alt="Ganado en un corral de Sonora" image="/assets/photos/ganado-corral.jpg" eyebrow="Quiénes somos" padding={90}>
+      <h2>Impulsando el <span class="verde">campo mexicano</span></h2>
+      <p>Brote Ag es una firma de estrategia y ejecución comercial dedicada exclusivamente a la agricultura. Trabajamos con fabricantes de insumos, empresas de semillas, distribuidores y agroindustrias que quieren crecer en el mercado mexicano.</p>
+      <p>Conocemos el campo porque trabajamos en él: hablamos con productores, recorremos regiones y entendemos cómo se toman las decisiones de compra en cada cultivo.</p>
+    </SplitRow>
+
+    <SplitRow side="left" alt="Productor y agrónomo revisando una milpa en Jalisco" image="/assets/photos/productor-asesor.jpg" eyebrow="Nuestra misión" link={routes.enfoque} linkLabel="Nuestro enfoque" padding={60}>
+      <h2>De la estrategia a la <span class="verde">ejecución</span></h2>
+      <p>Ayudamos a nuestros clientes a cerrar la brecha entre lo que planean y lo que realmente sucede en el mercado, alineando procesos, datos y experiencias de cliente.</p>
+    </SplitRow>
+
+    <MultiColumn
+      title='Nuestros <span class="verde">valores</span>'
+      items={[
+        { title: "Confianza", text: "Construimos relaciones de largo plazo con clientes, productores y distribuidores." },
+        { title: "Integridad", text: "Decimos lo que vemos en el campo, aunque no sea lo que se espera escuchar." },
+        { title: "Pasión por el campo", text: "Creemos en la agricultura mexicana y en quienes la hacen posible." },
+      ]}
+    />
+
+    <CtaBox />
+  </div>
+</Layout>

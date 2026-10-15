@@ -1,0 +1,23 @@
+/* Brote — paleta de marca como variables CSS (tema claro). Fuente: color/tokens.json */
+:root {
+  --petroleo: #003e51;      /* institucional, fondos oscuros, texto principal */
+  --brote: #00c65e;         /* verde del logo; texto solo sobre petróleo o suelo */
+  --brote-texto: #007a3d;   /* verde para texto sobre fondos claros (5.5:1) */
+  --brote-claro: #79d97c;   /* final del degradado de ondas */
+  --bosque: #309b42;        /* ondas del footer y gráficas */
+  --niebla: #dbe2e9;        /* formas decorativas y separadores */
+  --superficie: #ffffff;
+  --superficie-alt: #f3f7f6;
+  --suelo: #002a36;
+  --tinta: #003e51;
+  --tinta-suave: #4f6a74;
+  --sobre-brote: #002a36;
+  --sobre-petroleo: #ffffff;
+
+  --fuente-sans: "Urbanist", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --fuente-cita: "Lora", Georgia, "Times New Roman", serif;
+
+  --radius-sm: 6px;
+  --radius-md: 20px;
+  --radius-pill: 50px;
+}

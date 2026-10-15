@@ -1,0 +1,141 @@
+---
+// Las cuatro páginas de servicio BrtX™ comparten esta plantilla.
+import Layout from "../layouts/Layout.astro";
+import SplitRow from "../components/sections/SplitRow.astro";
+import MultiColumn from "../components/sections/MultiColumn.astro";
+import CardGrid from "../components/sections/CardGrid.astro";
+import CtaBox from "../components/sections/CtaBox.astro";
+import { services } from "../data/site.js";
+
+const details = {
+  diseno: {
+    alt: "Gerente comercial explicando un proceso de ventas en un pizarrón",
+    image: "/assets/photos/svc-diseno.jpg",
+    headline: 'Procesos alineados, <span class="verde">resultados consistentes</span>',
+    lead: "Cuando ventas, marketing y distribución trabajan con procesos distintos, la estrategia se pierde en el camino. Diseñamos e integramos la forma en que tu organización comercial ejecuta, para que cada rol sepa qué hacer, cuándo y con qué información.",
+    problems: [
+      { text: "Enfoques distintos en cada región o equipo." },
+      { text: "Métricas de éxito que no coinciden entre áreas." },
+      { text: "Capacitación que no se traduce en mejor desempeño." },
+    ],
+    deliver: [
+      { title: "Mapa del proceso comercial", text: "Documentamos cómo se vende hoy y dónde se pierde la intención del plan." },
+      { title: "Roles y responsabilidades", text: "Definimos quién hace qué en cada etapa del recorrido del cliente." },
+      { title: "Indicadores compartidos", text: "Un solo tablero de métricas para dirección, gerencias y campo." },
+    ],
+  },
+  analitica: {
+    alt: "Productor y agrónomo revisando una milpa en Jalisco",
+    image: "/assets/photos/productor-asesor.jpg",
+    headline: 'Decisiones con <span class="verde">evidencia</span>, no con intuición',
+    lead: "Medimos el impacto real de tus programas comerciales y de mercadeo en el campo. Convertimos datos de ventas, campañas y visitas en hallazgos claros que tu equipo puede usar para decidir dónde invertir.",
+    problems: [
+      { text: "No se sabe qué campañas generan ventas reales." },
+      { text: "Los reportes llegan tarde y nadie los usa." },
+      { text: "El presupuesto se reparte por costumbre, no por resultados." },
+    ],
+    deliver: [
+      { title: "Medición de campañas", text: "Atribución del resultado de cada iniciativa por región, cultivo y canal." },
+      { title: "Segmentación de productores", text: "Grupos de clientes según potencial, comportamiento y necesidades." },
+      { title: "Tableros accionables", text: "Información semanal pensada para la toma de decisiones del equipo." },
+    ],
+  },
+  datos: {
+    alt: "Vista aérea de parcelas en el Bajío",
+    image: "/assets/photos/hero-aerea.jpg",
+    headline: 'Tus datos como un <span class="verde">activo</span> de la organización',
+    lead: "Ordenamos, limpiamos y conectamos la información de clientes, distribuidores y ventas que hoy vive en sistemas y hojas de cálculo separadas. El resultado es una base confiable que sirve a todas las áreas.",
+    problems: [
+      { text: "Clientes duplicados o con información incompleta." },
+      { text: "Ventas de distribuidor sin visibilidad del productor final." },
+      { text: "Cada área tiene su propia versión de los datos." },
+    ],
+    deliver: [
+      { title: "Diagnóstico de datos", text: "Evaluamos calidad, fuentes y brechas de tu información actual." },
+      { title: "Limpieza y normalización", text: "Unificamos productos, clientes y geografías con reglas claras." },
+      { title: "Integración continua", text: "Procesos para que la información se mantenga al día cada mes." },
+    ],
+  },
+  omnicanal: {
+    alt: "Equipo caminando entre campos de sorgo en Tamaulipas",
+    image: "/assets/photos/equipo-campo.jpg",
+    headline: 'Generamos demanda <span class="verde">donde decide el productor</span>',
+    lead: "Diseñamos y operamos programas que llegan al productor por los canales que realmente usa: visitas de campo, demostraciones, mostrador, teléfono y canales digitales, con un mismo mensaje y seguimiento medible.",
+    problems: [
+      { text: "Mensajes distintos en cada canal de contacto." },
+      { text: "Campañas que no se conectan con el ciclo del cultivo." },
+      { text: "Prospectos que nadie da seguimiento." },
+    ],
+    deliver: [
+      { title: "Programas de campo", text: "Demostraciones, días de campo y visitas planeadas con objetivos claros." },
+      { title: "Contacto directo", text: "Seguimiento telefónico y por mensajería con guiones probados." },
+      { title: "Campañas digitales", text: "Contenido y pauta segmentada por región, cultivo y temporada." },
+    ],
+  },
+  marca: {
+    alt: "Productora revisando plantas de jitomate en un invernadero",
+    image: "/assets/photos/productora-invernadero.jpg",
+    headline: 'Una marca que el productor <span class="verde">reconoce</span>',
+    lead: "Construimos marcas y contenidos para empresas del campo: identidad, fotografía y video en parcela, redes sociales, catálogos y fichas técnicas. Todo con el lenguaje y las imágenes que el productor reconoce como suyas.",
+    problems: [
+      { text: "Fotos de banco que no se parecen al campo mexicano." },
+      { text: "Fichas técnicas difíciles de entender en el mostrador." },
+      { text: "Redes sociales sin constancia ni objetivo comercial." },
+    ],
+    deliver: [
+      { title: "Identidad de marca", text: "Logotipo, paleta, tipografía y guía de uso para todos tus equipos." },
+      { title: "Producción en campo", text: "Fotografía y video documental en las regiones donde vendes." },
+      { title: "Contenido continuo", text: "Calendario de redes, catálogos y materiales para distribuidores." },
+    ],
+  },
+  sitios: {
+    alt: "Productor revisando su celular junto a su camioneta",
+    image: "/assets/photos/art-omnicanal.jpg",
+    headline: 'Sitios que <span class="verde">venden</span> en el campo',
+    lead: "Diseñamos y desarrollamos sitios, landing pages de campaña, portales para distribuidores y catálogos digitales. Rápidos aun con mala señal, fáciles de usar desde el celular y conectados a tu CRM para medir cada prospecto.",
+    problems: [
+      { text: "Sitios lentos que no cargan con la señal del campo." },
+      { text: "Formularios que no llegan a nadie del equipo comercial." },
+      { text: "Catálogos en PDF imposibles de consultar en el celular." },
+    ],
+    deliver: [
+      { title: "Sitios y landing pages", text: "Diseño a la medida, optimizado para celular y buscadores." },
+      { title: "Portales de distribuidor", text: "Precios, materiales y pedidos en un solo lugar para tu red." },
+      { title: "Medición de prospectos", text: "Cada formulario y clic conectado a tu CRM y tus tableros." },
+    ],
+  },
+};
+
+export function getStaticPaths() {
+  return services.map((s) => ({
+    params: { servicio: s.href.replaceAll("/", "") },
+    props: { service: s },
+  }));
+}
+
+const { service } = Astro.props;
+const d = details[service.key];
+const others = services.filter((s) => s.key !== service.key).map((s) => ({ ...s, text: s.summary }));
+---
+<Layout title={service.title} description={service.summary} bodyClass="page page-template-default" headerTheme="dark">
+  <div class="grid-container page-container default-page">
+    <SplitRow id="intro" side="right" image={d.image} alt={d.alt} eyebrow={service.group} padding={150}>
+      <h1 set:html={d.headline} style="font-size: 42px;" />
+      <p>{d.lead}</p>
+    </SplitRow>
+
+    <MultiColumn title='<span class="verde">Síntomas</span> de una ejecución deficiente' items={d.problems} cols={3} padding={30} />
+
+    <MultiColumn title="Qué entregamos" items={d.deliver} cols={3} padding={30} />
+
+    <CardGrid
+      eyebrow="Otros servicios de Brote"
+      title='Una oferta <span class="verde">integrada</span>'
+      cards={others}
+      position="top"
+      padding={90}
+    />
+
+    <CtaBox title="¿Hablamos de tu caso?" text="Cuéntanos qué reto comercial quieres resolver." />
+  </div>
+</Layout>

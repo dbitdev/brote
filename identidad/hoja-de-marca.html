@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hoja de marca Brote</title>
+<link rel="icon" href="logos/favicon/brote-icono-32.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&family=Lora:ital@1&display=swap" />
+<link rel="stylesheet" href="color/paleta.css" />
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--fuente-sans); color: var(--tinta); background: var(--superficie); line-height: 1.6; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header { background: var(--petroleo); color: var(--sobre-petroleo); padding-block: 72px 96px; position: relative; overflow: hidden; }
+  header img.logo { width: 240px; }
+  header h1 { font-size: 48px; line-height: 1.1; margin: 32px 0 8px; max-width: 14ch; text-wrap: balance; }
+  header p { margin: 0; color: #a9bfc6; font-size: 18px; }
+  header .ondas { position: absolute; right: -80px; bottom: -40px; width: 640px; opacity: .9; }
+  section { padding-block: 64px; border-bottom: 1px solid var(--niebla); }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; margin: 0 0 16px; }
+  .eyebrow::before { content: ""; width: 2px; height: 28px; background: var(--brote); transform: skewX(-15deg); }
+  h2 { font-size: 32px; line-height: 1.25; margin: 0 0 24px; }
+  .verde { color: var(--brote-texto); }
+  .logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .logos figure { margin: 0; border-radius: var(--radius-md); padding: 32px; display: grid; place-items: center; min-height: 160px; }
+  .logos figure img { max-height: 70px; }
+  .logos figcaption { font-size: 13px; margin-top: 8px; }
+  .claro { background: var(--superficie-alt); }
+  .oscuro { background: var(--petroleo); color: var(--sobre-petroleo); }
+  .colores { display: grid; grid-template-columns: 2fr 2fr 1fr 1fr 1fr; gap: 12px; }
+  .sw { border-radius: var(--radius-md); min-height: 180px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 13px; }
+  .sw b { font-size: 15px; }
+  .tipo .muestra { font-size: 56px; font-weight: 700; line-height: 1.05; margin: 0 0 16px; }
+  .tipo .cita { font-family: var(--fuente-cita); font-style: italic; font-size: 22px; line-height: 1.45; max-width: 40ch; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+  .iconos { display: flex; flex-wrap: wrap; gap: 24px; }
+  .iconos figure { margin: 0; text-align: center; font-size: 13px; width: 120px; }
+  .iconos img { width: 65px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  td { padding: 10px 0; border-bottom: 1px solid var(--niebla); vertical-align: top; }
+  td:first-child { color: var(--tinta-suave); width: 40%; padding-right: 16px; }
+  @media (max-width: 720px) { .colores { grid-template-columns: 1fr 1fr; } header h1 { font-size: 36px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img class="logo" src="logos/png/brote-wordmark-blanco.png" alt="Brote" />
+    <h1>Publicidad y marketing para el campo</h1>
+    <p>Impulsando el campo mexicano.</p>
+  </div>
+  <img class="ondas" src="patrones/ondas-hero.svg" alt="" />
+</header>
+
+<section>
+  <div class="wrap grid2">
+    <div>
+      <p class="eyebrow">Quiénes somos</p>
+      <h2>La agencia digital del <span class="verde">sector agrícola</span> de México</h2>
+      <p>Ayudamos a las empresas que venden al campo a ejecutar su estrategia comercial con datos, marketing digital y conocimiento real del productor.</p>
+    </div>
+    <table>
+      <tr><td>Promesa</td><td>Hacemos que tu estrategia se ejecute en el campo, y te mostramos con datos que funcionó.</td></tr>
+      <tr><td>Pilares</td><td>Del campo · Ejecución · Datos con sentido · Relaciones de largo plazo</td></tr>
+      <tr><td>Personalidad</td><td>Práctica, cercana, segura, moderna y mexicana.</td></tr>
+      <tr><td>Trato</td><td>Tú con empresas; usted con productores.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Logotipo</p>
+    <div class="logos">
+      <figure class="claro"><img src="logos/png/brote-wordmark-petroleo.png" alt="Wordmark petróleo" /><figcaption>Principal · fondos claros</figcaption></figure>
+      <figure class="oscuro"><img src="logos/png/brote-wordmark-blanco.png" alt="Wordmark blanco" /><figcaption>Fondos oscuros y fotos</figcaption></figure>
+      <figure class="oscuro"><img src="logos/png/brote-wordmark-verde.png" alt="Wordmark verde" /><figcaption>Solo sobre petróleo</figcaption></figure>
+      <figure class="claro"><img src="logos/png/brote-icono.png" alt="Ícono" style="max-height:110px;border-radius:20px" /><figcaption>Ícono · redes y favicon</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Color</p>
+    <div class="colores">
+      <div class="sw" style="background:var(--petroleo);color:#fff"><b>Petróleo</b>#003E51</div>
+      <div class="sw" style="background:var(--brote);color:var(--sobre-brote)"><b>Brote</b>#00C65E</div>
+      <div class="sw" style="background:var(--brote-texto);color:#fff"><b>Brote texto</b>#007A3D</div>
+      <div class="sw" style="background:var(--brote-claro);color:var(--sobre-brote)"><b>Brote claro</b>#79D97C</div>
+      <div class="sw" style="background:var(--niebla)"><b>Niebla</b>#DBE2E9</div>
+    </div>
+    <p style="font-size:14px;color:var(--tinta-suave)">El verde brote no se usa como texto sobre blanco (2.3:1). Para eso existe brote texto (5.5:1).</p>
+  </div>
+</section>
+
+<section class="tipo">
+  <div class="wrap grid2">
+    <div>
+      <p class="eyebrow">Tipografía · Urbanist</p>
+      <p class="muestra">Tu estrategia, ejecutada en la parcela</p>
+      <p>Urbanist 400 a 700 para titulares, texto y botones. Titulares en tipo oración; una sola palabra en verde por titular.</p>
+    </div>
+    <div>
+      <p class="eyebrow">Citas · Lora itálica</p>
+      <p class="cita">“Agrónomos, analistas y creativos que hablan el idioma del campo y saben convertir un plan en ventas.”</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Servicios e íconos</p>
+    <div class="iconos">
+      <figure><img src="iconos/diseno.svg" alt="" /><br />Diseño comercial</figure>
+      <figure><img src="iconos/analitica.svg" alt="" /><br />Analítica de marketing</figure>
+      <figure><img src="iconos/datos.svg" alt="" /><br />Habilitación de datos</figure>
+      <figure><img src="iconos/omnicanal.svg" alt="" /><br />Demanda omnicanal</figure>
+      <figure><img src="iconos/marca.svg" alt="" /><br />Marca y contenido</figure>
+      <figure><img src="iconos/sitios.svg" alt="" /><br />Sitios y plataformas</figure>
+    </div>
+  </div>
+</section>
+
+<section style="border:0">
+  <div class="wrap grid2">
+    <div>
+      <p class="eyebrow">Fotografía</p>
+      <p>Documental y real: productores, técnicos y equipos trabajando en campo mexicano, con luz natural. Personas haciendo su trabajo, sin posar. Siempre con overlay de petróleo antes de poner texto.</p>
+    </div>
+    <div>
+      <p class="eyebrow">Mensajes clave</p>
+      <table>
+        <tr><td>Firma</td><td>Impulsando el campo mexicano.</td></tr>
+        <tr><td>Campaña</td><td>Publicidad y marketing para el campo.</td></tr>
+        <tr><td>Método</td><td>Con BrtX™, tu estrategia llega a la parcela.</td></tr>
+        <tr><td>Llamado</td><td>Cuéntanos qué quieres que crezca.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+</body>
+</html>

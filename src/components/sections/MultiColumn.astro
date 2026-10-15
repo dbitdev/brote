@@ -1,0 +1,24 @@
+---
+// Bloque de columnas con titular. items: [{ title?, text }]
+const { title, intro, items = [], cols = 3, padding = 60 } = Astro.props;
+---
+<section class="multi-column-editable multi-column" style={`padding-top:${padding}px;padding-bottom:${padding}px;`}>
+  <div class="inner-section">
+    <div class="intro">
+      <div class="headline">
+        {title && <h2 set:html={title} />}
+        {intro && <p>{intro}</p>}
+      </div>
+    </div>
+    <div class={`columns col-${cols}`}>
+      {items.map((item) => (
+        <div class="column">
+          <div class="description">
+            {item.title && <h4>{item.title}</h4>}
+            <p><span style="color: #003e51;">{item.text}</span></p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

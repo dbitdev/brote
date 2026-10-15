@@ -1,0 +1,57 @@
+---
+import { topMenu, mainMenu } from "../data/site.js";
+
+const { theme = "light" } = Astro.props;
+const cls = (item, extra = "") =>
+  `${extra} menu-item menu-item-${item.id}${item.children ? " menu-item-has-children" : ""}`.trim();
+---
+<header id="header" class={`show header ${theme}`}>
+  <div class="container">
+    <div class="logo-wrap header__logo-wrap">
+      <a href="/" aria-label="Inicio de Brote">
+        <img class="logo-petroleo" src="/assets/media/brote-logo-petroleo.png" width="175" height="53" alt="Brote, agencia digital para el campo mexicano" />
+        <img class="logo-blanco" src="/assets/media/brote-logo-blanco.png" width="175" height="53" alt="" aria-hidden="true" />
+      </a>
+    </div>
+    <div class="navigation-wrapper">
+      <nav id="site-navigation" role="navigation">
+        <div class="top-navigation">
+          <ul id="top_menu-nav" class="top_menu">
+            {topMenu.map((item) => (
+              <li id={`menu-item-${item.id}`} class={cls(item)}><a href={item.href}>{item.label}</a></li>
+            ))}
+            <li id="menu-item-51" class="search-navigation menu-item menu-item-51"><a href="#">Buscar</a></li>
+          </ul>
+        </div>
+        <hr class="nav-divider" />
+        <div class="main-nav">
+          <ul id="main-nav__menu" class="main-nav__menu">
+            {mainMenu.map((item) => (
+              <li id={`menu-item-${item.id}`} class={cls(item)}>
+                <a href={item.href ?? "#"}>{item.label}</a>
+                {item.children && (
+                  <ul class="sub-menu">
+                    {item.children.map((child) => (
+                      <li id={`menu-item-${child.id}`} class={cls(child)}><a href={child.href}>{child.label}</a></li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="search-form-header">
+          <form role="search" method="get" class="search-form" action="/noticias-y-recursos/">
+            <label>
+              <span class="screen-reader-text">Buscar:</span>
+              <input type="search" class="search-field" placeholder="Buscar &hellip;" name="q" />
+            </label>
+            <input type="submit" class="search-submit" value="Buscar" />
+          </form>
+          <a href="#" class="close-search">Cerrar <img src="/assets/img/close.svg" alt="" /></a>
+        </div>
+      </nav>
+    </div>
+    <button id="mobile-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span></button>
+  </div>
+</header>

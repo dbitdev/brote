@@ -1,0 +1,104 @@
+/* Ajustes propios de Brote */
+/* Todas las rejillas de fichas: 1 columna en móvil, 2 en tablet, 3 en escritorio.
+   Con flex, una última fila incompleta queda centrada en lugar de dejar un hueco. */
+.flexible-grid-section .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.flexible-grid-section .grid .card { flex: 0 0 100%; }
+@media (min-width: 640px) {
+  .flexible-grid-section .grid .card { flex-basis: calc((100% - 20px) / 2); }
+}
+@media (min-width: 1024px) {
+  .flexible-grid-section .grid .card { flex-basis: calc((100% - 40px) / 3); }
+}
+
+/* Rejilla de noticias (el tema original usaba Isotope) */
+.news-resources-section .news-resources-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+.news-resources-section .news-resources-grid .gutter-sizer { display: none; }
+.news-resources-section .news-resources-grid .news-resources-post { width: auto !important; margin: 0 !important; position: static !important; }
+@media (min-width: 640px) { .news-resources-section .news-resources-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .news-resources-section .news-resources-grid { grid-template-columns: repeat(3, 1fr); } }
+.news-filter li { cursor: pointer; }
+
+/* ---------- Identidad Brote: tokens de color ----------
+   brote (#00c65e) solo se usa como texto sobre fondos oscuros (5.1:1 sobre petróleo).
+   Sobre fondos claros se usa brote-texto (#007a3d, 5.5:1). Ver guía de marca. */
+:root {
+  --petroleo: #003e51;
+  --brote: #00c65e;
+  --brote-texto: #007a3d;
+  --brote-claro: #79d97c;
+  --bosque: #309b42;
+  --niebla: #dbe2e9;
+  --suelo: #002a36;
+  --tinta: #003e51;
+  --tinta-suave: #4f6a74;
+}
+
+.verde { color: var(--brote-texto); }
+#hero-slider .verde,
+.waved-hero .verde,
+.full-image-section .verde,
+#post-hero .verde,
+.copyright .verde { color: var(--brote); }
+
+/* Flechas, viñetas y enlaces sobre fondos claros */
+p.link:after,
+a.no-shape:after,
+button.no-shape:after,
+.wpcf7-form .beck-submit:after,
+#site-wrap .grid-container ul:not(.slick-dots):not(.jump-link-mobile) li::before,
+.multi-column .inner-section .columns .column p.number,
+body .sharing-default-minimal a,
+body.single p a,
+body.single .content a { color: var(--brote-texto); }
+
+/* Sobre fondos oscuros se mantiene el verde brote */
+.flexible-grid-section .grid .card:hover p.link,
+.flexible-grid-section .grid .card:hover p.link:after,
+.full-image-section a.no-shape:after,
+#hero-slider a.no-shape:after,
+.waved-hero a.no-shape:after,
+.site-footer .wpcf7-form .beck-submit:after,
+.site-footer a.no-shape:after { color: var(--brote); }
+
+body.single #post-hero .inner-section .post-categories { color: var(--brote); }
+
+/* Logo del menú: petróleo sobre header blanco, blanco sobre fotografía (ver guía de marca) */
+#header .logo-wrap img { display: block; height: auto; }
+#header .logo-wrap .logo-blanco { display: none; }
+#header.light .logo-wrap .logo-petroleo,
+#header.dark.active .logo-wrap .logo-petroleo,
+#header.fixed .logo-wrap .logo-petroleo { display: none; }
+#header.light .logo-wrap .logo-blanco,
+#header.dark.active .logo-wrap .logo-blanco,
+#header.fixed .logo-wrap .logo-blanco { display: block; }
+
+/* Títulos de slides 2-4: mismo estilo que el H1 (solo el primero es H1 por SEO) */
+.hero-article .hero-title { font-family: "Urbanist", sans-serif; font-weight: 500; color: #fff; margin: 0 0 10px; font-size: 32px; line-height: 34px; }
+@media screen and (min-width: 375px) { .hero-article .hero-title { font-size: calc(32px + 16 * ((100vw - 375px) / 925)); line-height: calc(34px + 24 * ((100vw - 375px) / 925)); } }
+@media screen and (min-width: 1300px) { .hero-article .hero-title { font-size: 48px; line-height: 58px; } }
+
+/* ---------- Menú ---------- */
+/* Los colores del menú cambian sin el retraso de 0.3 s del tema (causaba enlaces invisibles) */
+#header .container .navigation-wrapper #site-navigation .main-nav ul li a,
+#header .container .navigation-wrapper #site-navigation .top-navigation ul li a { transition: color .15s ease-out !important; }
+/* Dropdown abierto también por teclado (.hover) */
+@media (min-width: 1024px) {
+  #header .container #site-navigation .main-nav #main-nav__menu li.menu-item-has-children.hover .sub-menu { transform: translateY(0); }
+}
+/* Enlaces del panel siempre legibles sobre el fondo petróleo */
+#header #site-navigation .main-nav #main-nav__menu li.menu-item-has-children .sub-menu li a { color: #fff !important; }
+#header #site-navigation .main-nav #main-nav__menu li.menu-item-has-children .sub-menu li a:hover,
+#header #site-navigation .main-nav #main-nav__menu li.menu-item-has-children .sub-menu li a:focus-visible { color: var(--brote) !important; }
+#header.dark.active .container .navigation-wrapper #site-navigation .main-nav ul li a,
+#header.dark.active .container .navigation-wrapper #site-navigation .top-navigation ul li a { color: #fff; }
+#header a:focus-visible, #mobile-menu:focus-visible { outline: 2px solid var(--brote); outline-offset: 3px; }
+
+/* Menú móvil: animaciones cortas y sin retraso */
+@media (max-width: 1023px) {
+  #header .container .navigation-wrapper { transition: transform .3s ease-out !important; }
+  #header .container .navigation-wrapper * { transition-delay: 0s !important; }
+  #header .container #site-navigation .main-nav > ul > li.menu-item-has-children .sub-menu { transition: max-height .25s ease-out, opacity .2s linear, margin .25s ease-out !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #header, #header * { transition: none !important; }
+}

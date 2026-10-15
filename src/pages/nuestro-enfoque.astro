@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavedHero from "../components/sections/WavedHero.astro";
+import MultiColumn from "../components/sections/MultiColumn.astro";
+import FullImage from "../components/sections/FullImage.astro";
+import SplitRow from "../components/sections/SplitRow.astro";
+import CtaBox from "../components/sections/CtaBox.astro";
+import { routes } from "../data/site.js";
+---
+<Layout title="Nuestro enfoque" bodyClass="page page-template-default" description="Así trabaja Brote: diagnóstico, diseño, implementación y medición para que tu estrategia comercial se cumpla en el campo.">
+  <div class="grid-container page-container default-page">
+    <WavedHero title="Nuestro enfoque" subtitle="Un método probado para llevar la estrategia al campo" image="/assets/photos/hero-soya.jpg" />
+
+    <MultiColumn
+      title='Cuatro etapas, <span class="verde">un solo objetivo</span>'
+      intro="Cada proyecto sigue el mismo camino, adaptado al tamaño y la madurez de tu organización."
+      cols={2}
+      items={[
+        { title: "01. Diagnóstico", text: "Entendemos cómo ejecuta hoy tu organización y dónde se pierde valor." },
+        { title: "02. Diseño", text: "Definimos procesos, roles, datos e indicadores para la ejecución ideal." },
+        { title: "03. Implementación", text: "Trabajamos junto a tu equipo en campo hasta que el nuevo modelo funciona." },
+        { title: "04. Medición", text: "Seguimos los indicadores acordados y ajustamos en cada ciclo." },
+      ]}
+    />
+
+    <FullImage
+      image="/assets/photos/hero-ganado.jpg"
+      eyebrow="Lo que nos guía"
+      quote="Ejecutar bien no es hacer más cosas: es hacer las correctas, de la misma manera, en todas partes."
+    />
+
+    <SplitRow side="right" alt="Equipo de Brote caminando entre campos de sorgo en Tamaulipas" image="/assets/photos/equipo-campo.jpg" eyebrow="Trabajo en campo" link={routes.brtx} linkLabel="Ver soluciones BrtX™" padding={90}>
+      <h2>Cerca del <span class="verde">productor</span></h2>
+      <p>Nuestro equipo pasa tiempo en las regiones donde operan nuestros clientes. Esa cercanía nos permite diseñar soluciones que funcionan en la realidad del campo mexicano, no solo en una presentación.</p>
+    </SplitRow>
+
+    <CtaBox />
+  </div>
+</Layout>

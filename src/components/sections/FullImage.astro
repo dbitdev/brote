@@ -1,0 +1,16 @@
+---
+const { id, image, eyebrow, quote, link, linkLabel } = Astro.props;
+---
+<section id={id} class="full-image-section uk-background-cover full-image-component gradient" uk-parallax="bgy: -200" style={`background: url('${image}') center center / cover no-repeat;`}>
+  <div class="inner-section">
+    <div class="content-section">
+      {eyebrow && <p class="upper-title">{eyebrow}</p>}
+      <div class="testimonial">
+        <h5 class="lora-font"><span style="color: #ffffff;">{quote}</span></h5>
+        {link && (
+          <p><a style="color: #ffffff; font-size: 14px; text-decoration: underline;" href={link}>{linkLabel}</a></p>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

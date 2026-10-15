@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SplitRow from "../components/sections/SplitRow.astro";
+import CardGrid from "../components/sections/CardGrid.astro";
+import FullImage from "../components/sections/FullImage.astro";
+import MultiColumn from "../components/sections/MultiColumn.astro";
+import CtaBox from "../components/sections/CtaBox.astro";
+import { services, routes } from "../data/site.js";
+
+const cards = services.map((s) => ({ href: s.href, icon: s.icon, title: s.title, text: s.summary }));
+---
+<Layout title="Método BrtX™ de ejecución comercial" bodyClass="page page-template-default" headerTheme="dark" description="BrtX™ es el método de Brote para llevar la estrategia comercial al campo: diseño comercial, analítica, datos y demanda omnicanal.">
+  <div class="grid-container page-container default-page">
+    <SplitRow id="brtx" side="right" alt="Equipo de agronegocios en una reunión de planeación" image="/assets/photos/brtx-split.jpg" eyebrow="BrtX™ Soluciones" padding={150}>
+      <h1 style="font-size: 42px;">Mejora tu rendimiento con <span class="verde">BrtX™</span></h1>
+      <p>Las estrategias y los planes por sí solos no son suficientes para tener éxito en el mercado agrícola actual. BrtX™ es nuestro modelo para llevar la estrategia a la ejecución: alinea procesos internos, aprovecha datos y herramientas, y entrega experiencias de cliente que generan confianza.</p>
+    </SplitRow>
+
+    <CardGrid
+      id="soluciones"
+      eyebrow="Seis servicios integrados"
+      title='Elige por dónde <span class="verde">empezar</span>'
+      cards={cards}
+      padding={60}
+    />
+
+    <FullImage
+      image="/assets/photos/hero-aerea.jpg"
+      eyebrow="Nuestra convicción"
+      quote="La diferencia entre las empresas que crecen y las que se estancan no está en el plan, sino en la ejecución de todos los días."
+    />
+
+    <SplitRow side="left" alt="Productor y agrónomo revisando una milpa en Jalisco" image="/assets/photos/productor-asesor.jpg" eyebrow="Cómo trabajamos" link={routes.enfoque} linkLabel="Conoce nuestro enfoque" padding={90}>
+      <h2>Del diagnóstico a <span class="verde">resultados medibles</span></h2>
+      <p>Empezamos por entender cómo ejecuta hoy tu organización. Con ese diagnóstico definimos prioridades, implementamos junto con tu equipo y medimos el avance con indicadores acordados desde el inicio.</p>
+    </SplitRow>
+
+    <MultiColumn
+      title="Lo que logran nuestros clientes"
+      items={[
+        { title: "Procesos alineados", text: "Ventas, marketing y distribución ejecutan el mismo plan." },
+        { title: "Datos confiables", text: "Una sola versión de la información para decidir." },
+        { title: "Clientes más leales", text: "Experiencias consistentes que generan recompra." },
+      ]}
+    />
+
+    <CtaBox />
+  </div>
+</Layout>

@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavedHero from "../components/sections/WavedHero.astro";
+import MultiColumn from "../components/sections/MultiColumn.astro";
+import FullImage from "../components/sections/FullImage.astro";
+import { routes, site } from "../data/site.js";
+
+const jobs = [
+  { title: "Arquitecto(a) de Ejecución Comercial", excerpt: "Buscamos un profesional de ventas y marketing con enfoque en el cliente para liderar iniciativas con empresas del sector agrícola…" },
+  { title: "Analista de Datos Comerciales", excerpt: "Te unirás al equipo que limpia, integra y analiza la información de ventas y distribución de nuestros clientes…" },
+  { title: "Coordinador(a) de Programas de Campo", excerpt: "Organizarás demostraciones, días de campo y visitas a productores en distintas regiones del país…" },
+];
+---
+<Layout title="Carreras en marketing agrícola" bodyClass="page page-template-default" description="Trabaja en Brote. Buscamos profesionales apasionados por la agricultura, los datos y el marketing para crecer con el campo mexicano.">
+  <div class="grid-container page-container default-page">
+    <WavedHero title="Carreras en marketing agrícola" subtitle="Crece con nosotros mientras hacemos crecer al campo" image="/assets/photos/hero-aerea.jpg" />
+
+    <MultiColumn
+      title="Sé parte del equipo"
+      intro="En Brote Ag buscamos profesionales apasionados por la agricultura, comprometidos con la excelencia y con ganas de aprender todos los días. Si nuestros principios te representan, trabajemos juntos."
+      items={[
+        { title: "Responsabilidad", text: "Cada persona es dueña de sus resultados y apoya los del equipo." },
+        { title: "Aprendizaje continuo", text: "El campo cambia cada ciclo y nosotros con él." },
+        { title: "Servicio", text: "El éxito de nuestros clientes es la medida de nuestro trabajo." },
+      ]}
+    />
+
+    <FullImage
+      image="/assets/photos/equipo-campo.jpg"
+      eyebrow="Vida en Brote Ag"
+      quote="Trabajamos tanto en la oficina como en el campo, con equipos pequeños y mucha autonomía."
+    />
+
+    <section id="job-listing" class="jobs-listing">
+      <img class="waves" src="/assets/img/bg-wave-left.svg" alt="" />
+      <img class="waves-mobile" src="/assets/img/bg-waves-mobile.svg" alt="" />
+      <div class="inner-section">
+        <div class="upper-title">Vacantes disponibles</div>
+        {jobs.map((j) => (
+          <div class="job">
+            <h3>{j.title}</h3>
+            <p class="excerpt">{j.excerpt}</p>
+            <a href={`mailto:${site.email}?subject=${encodeURIComponent("Vacante: " + j.title)}`} class="no-shape link">Postularme</a>
+          </div>
+        ))}
+        <p style="margin-top: 30px;">¿No ves una vacante para ti? <a href={routes.contacto}>Escríbenos</a>.</p>
+      </div>
+    </section>
+  </div>
+</Layout>

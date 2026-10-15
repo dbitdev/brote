@@ -1,0 +1,27 @@
+---
+// Rejilla de tarjetas (soluciones o artículos). cards: [{ href, icon?, title, text?, link }]
+const { id, eyebrow, title, intro, cards = [], position = "bottom", padding = 60 } = Astro.props;
+---
+<section id={id} class={`flexible-grid-section ${position}`} style={`padding-top:${padding}px;padding-bottom:${padding}px;`}>
+  <div class="inner-section inner-section-center">
+    {(eyebrow || title) && (
+      <div class="intro">
+        {eyebrow && <p class="upper-title">{eyebrow}</p>}
+        {title && <h2 style="text-align: center;" set:html={title} />}
+        {intro && <p style="text-align: center;">{intro}</p>}
+      </div>
+    )}
+    <div class="grid">
+      {cards.map((c) => (
+        <a class="card" href={c.href}>
+          {c.icon && <img class="icon" src={c.icon} alt="" />}
+          <div class="description">
+            <h4>{c.title}</h4>
+            {c.text && <p>{c.text}</p>}
+          </div>
+          <p class="link">{c.link ?? "Aprende más"}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

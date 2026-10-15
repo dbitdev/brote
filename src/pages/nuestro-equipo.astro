@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavedHero from "../components/sections/WavedHero.astro";
+import CtaBox from "../components/sections/CtaBox.astro";
+import { routes } from "../data/site.js";
+
+// Reemplaza estos datos (y agrega `photo`) con los integrantes reales del equipo.
+const team = [
+  { name: "Nombre Apellido", role: "Director General", bio: "Breve semblanza del integrante del equipo." },
+  { name: "Nombre Apellido", role: "Directora de Operaciones", bio: "Breve semblanza del integrante del equipo." },
+  { name: "Nombre Apellido", role: "Director Comercial", bio: "Breve semblanza del integrante del equipo." },
+  { name: "Nombre Apellido", role: "Gerente de Analítica", bio: "Breve semblanza del integrante del equipo." },
+  { name: "Nombre Apellido", role: "Gerente de Datos", bio: "Breve semblanza del integrante del equipo." },
+  { name: "Nombre Apellido", role: "Gerente de Programas de Campo", bio: "Breve semblanza del integrante del equipo." },
+];
+const placeholder = "linear-gradient(160deg, #003e51 0%, #309b42 100%)";
+---
+<Layout title="Nuestro equipo" bodyClass="page page-template-default" description="Conoce al equipo de Brote: agrónomos, analistas y creativos que hablan el idioma del campo mexicano.">
+  <div class="grid-container page-container default-page">
+    <WavedHero title="Nuestro equipo" subtitle="Personas que conocen el campo y saben ejecutar" image="/assets/photos/equipo-campo.jpg" />
+
+    <section class="leadership-section leadership-grid">
+      <img class="waves" src="/assets/img/bg-wave-left.svg" alt="" />
+      <div class="inner-section">
+        <div class="grid-title"><h3>Liderazgo</h3></div>
+        <div class="member-grid">
+          {team.map((m) => (
+            <div class="member">
+              <div class="inner-member" style={`background: ${m.photo ? `url('${m.photo}') center center / cover no-repeat` : placeholder};`}>
+                <div class="member-info">
+                  <h4>{m.name}</h4>
+                  <p class="active">{m.role}</p>
+                </div>
+                <div class="member-bio"><p><span style="color: #ffffff;">{m.bio}</span></p></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CtaBox title="¿Quieres sumarte?" text="Conoce nuestras vacantes abiertas." link={routes.carreras} linkLabel="Ver vacantes" />
+  </div>
+</Layout>

@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WavedHero from "../components/sections/WavedHero.astro";
+import { articles } from "../data/articles.js";
+
+const [featured, ...rest] = articles;
+const categories = [...new Map(articles.map((a) => [a.filter, a.category])).entries()];
+---
+<Layout title="Noticias y recursos de marketing agrícola" bodyClass="page page-template-default" description="Artículos y recursos de Brote sobre marketing agrícola, datos de distribución y ejecución comercial en el campo mexicano.">
+  <div class="grid-container page-container default-page">
+    <WavedHero title="Noticias y recursos" subtitle="Ideas para ejecutar mejor en el campo mexicano" image="/assets/photos/hero-noticias.jpg" />
+
+    <section class="featured_article-section with-thumbnail">
+      <p class="upper-title">Artículo destacado</p>
+      <a href={`/noticias/${featured.slug}/`} class="inner-featured_article-section">
+        <div class="overlay"></div>
+        <img src={featured.image} alt="" class="featured_post-thumbnail" />
+        <div class="inner-section">
+          <h3>{featured.title}</h3>
+          <p class="excerpt">{featured.excerpt}</p>
+          <p class="link">Leer más</p>
+        </div>
+        <div class="categories-container"><p class="post-categories">{featured.category}</p></div>
+      </a>
+    </section>
+
+    <section class="news-resources-section">
+      <div class="inner-section">
+        <div class="grid-header">
+          <h2>Publicaciones recientes</h2>
+          <button type="button" class="posts-filter-button">Filtrar por: <img src="/assets/img/chev-down.svg" alt="" /></button>
+        </div>
+        <ul class="news-filter">
+          <li data-filter="*">Todas</li>
+          {categories.map(([key, label]) => <li data-filter={`.${key}`}>{label}</li>)}
+        </ul>
+        <div class="news-resources-grid">
+          {[featured, ...rest].map((a) => (
+            <>
+              <div class="gutter-sizer"></div>
+              <div class={`news-resources-post ${a.filter}`}>
+                <a href={`/noticias/${a.slug}/`}>
+                  <div class="image_post">
+                    <img src={a.image} alt="" loading="lazy" />
+                    <div class="overlay"></div>
+                    <div class="categories-container"><div class="post-categories">{a.category}</div></div>
+                  </div>
+                  <div class="post-content">
+                    <h4>{a.title}</h4>
+                    <p class="excerpt">{a.excerpt}</p>
+                    <p class="link">Leer más</p>
+                  </div>
+                </a>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
