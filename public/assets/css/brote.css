@@ -102,3 +102,54 @@ body.single #post-hero .inner-section .post-categories { color: var(--brote); }
 @media (prefers-reduced-motion: reduce) {
   #header, #header * { transition: none !important; }
 }
+
+/* ---------- Fotos de secciones 50/50 ----------
+   La foto conserva su proporción (nunca se estira) y la decoración de líneas
+   no ocupa espacio en la página. */
+.split-row_50 .inner-section .image-wrapper .lines-pattern { display: none !important; }
+.split-row_50 .inner-section .image-wrapper img:not(.lines-pattern) {
+  display: block;
+  height: auto !important;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+@media (max-width: 1023px) {
+  .split-row_50 .inner-section .image-wrapper { padding-top: 20px; margin-bottom: 32px; }
+  .split-row_50 .inner-section .image-wrapper img:not(.lines-pattern),
+  .split-row_50.right .inner-section .image-wrapper img:not(.lines-pattern) {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    transform: none !important;
+    -webkit-mask-box-image: none !important;
+    -webkit-mask-image: url("../img/image-left-mask.svg");
+    mask-image: url("../img/image-left-mask.svg");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+  .split-row_50.right .inner-section .image-wrapper img:not(.lines-pattern) {
+    -webkit-mask-image: url("../img/image-right-mask.svg");
+    mask-image: url("../img/image-right-mask.svg");
+  }
+  /* La forma gris de fondo, más pequeña y proporcional al ancho */
+  .split-row_50 .inner-section .image-wrapper:after { width: 70% !important; height: 60% !important; background-size: 100% 100% !important; }
+}
+@media (min-width: 1024px) {
+  .split-row_50 .inner-section .image-wrapper img:not(.lines-pattern) { max-height: none; }
+}
+
+/* Móvil: menos aire vertical entre secciones (los valores de escritorio llegan a 150 px) */
+@media (max-width: 767px) {
+  .split-row_50,
+  .flexible-grid-section,
+  .multi-column-editable { padding-top: 40px !important; padding-bottom: 40px !important; }
+  .split-row_50 .inner-section .image-wrapper { margin-bottom: 24px; }
+}
+
+/* Páginas sin foto de portada: título de entrada y espacio para el header fijo */
+.intro-title { font-size: clamp(30px, 4vw + 14px, 42px); line-height: 1.15; }
+@media (max-width: 767px) {
+  #intro.split-row_50, #brtx.split-row_50 { padding-top: 110px !important; }
+}

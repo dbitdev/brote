@@ -120,7 +120,7 @@ const others = services.filter((s) => s.key !== service.key).map((s) => ({ ...s,
 <Layout title={service.title} description={service.summary} bodyClass="page page-template-default" headerTheme="dark">
   <div class="grid-container page-container default-page">
     <SplitRow id="intro" side="right" image={d.image} alt={d.alt} eyebrow={service.group} padding={150}>
-      <h1 set:html={d.headline} style="font-size: 42px;" />
+      <h1 class="intro-title" set:html={d.headline} />
       <p>{d.lead}</p>
     </SplitRow>
 

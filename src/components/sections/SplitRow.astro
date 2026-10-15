@@ -9,7 +9,7 @@ const pattern = side === "left" ? "/assets/img/50-pattern-left.svg" : "/assets/i
       <img uk-parallax="y: -70, 20" src={pattern} alt="" class="lines-pattern" />
       <img uk-parallax="y: -70, 20" src={image} alt={alt ?? ""} loading="lazy" width="1920" height="1080" />
     </div>
-    <div class="content" uk-scrollspy="cls: uk-animation-fade; repeat: false;">
+    <div class="content">
       {eyebrow && <p class="upper-title">{eyebrow}</p>}
       <slot />
       {link && <a class="no-shape light" href={link}>{linkLabel}</a>}
