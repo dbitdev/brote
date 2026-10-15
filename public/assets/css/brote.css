@@ -161,3 +161,12 @@ body.single #post-hero .inner-section .post-categories { color: var(--brote); }
 @media (max-width: 767px) {
   #intro.split-row_50, #brtx.split-row_50 { padding-top: 110px !important; }
 }
+
+/* Footer: el espacio superior crece con la onda (que se escala con el ancho),
+   así el titular del newsletter nunca queda encima de la franja. */
+@media (min-width: 1024px) {
+  footer .container { padding-top: calc(13vw + 24px) !important; }
+}
+@media (max-width: 1023px) {
+  footer .container { padding-top: calc(36vw + 24px) !important; }
+}

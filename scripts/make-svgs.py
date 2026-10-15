@@ -153,9 +153,10 @@ save("50-pattern-right.svg", 183, 340, slanted_lines(183, 340, True))
 def footer_wave(w, h, dot_step=9):
     def P(u, v):
         return f"{u * w:.1f} {v * h:.1f}"
-    top = f"M{P(0, 0.02)} C{P(0.3, 0.22)} {P(0.72, 0.3)} {P(1, 0.08)}"
-    green_bottom = f"L{P(1, 0.74)} C{P(0.78, 0.66)} {P(0.55, 0.42)} {P(0.32, 0.44)} C{P(0.18, 0.45)} {P(0.07, 0.55)} {P(0, 0.62)} Z"
-    outer_bottom = f"L{P(1, 0.98)} C{P(0.8, 0.95)} {P(0.6, 0.68)} {P(0.32, 0.6)} C{P(0.18, 0.56)} {P(0.07, 0.68)} {P(0, 0.8)} Z"
+    # Verde sólido arriba; la franja sube a la izquierda (deja aire al titular) y baja a la derecha.
+    top = f"M{P(0, 0)} L{P(1, 0)}"
+    green_bottom = f"L{P(1, 0.78)} C{P(0.72, 0.62)} {P(0.52, 0.16)} {P(0.3, 0.14)} C{P(0.17, 0.13)} {P(0.07, 0.24)} {P(0, 0.36)} Z"
+    outer_bottom = f"L{P(1, 0.98)} C{P(0.72, 0.9)} {P(0.52, 0.3)} {P(0.3, 0.27)} C{P(0.17, 0.25)} {P(0.07, 0.38)} {P(0, 0.52)} Z"
     body = (
         "<defs>"
         f'<linearGradient id="fondo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{NAVY}"/><stop offset="0.55" stop-color="#1d6a57"/><stop offset="1" stop-color="{FOREST}"/></linearGradient>'
