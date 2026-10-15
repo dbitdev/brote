@@ -18,6 +18,8 @@ const {
   noindex = false,
   schema,
 } = Astro.props;
+// Versión del build: obliga al navegador a descargar el CSS nuevo tras cada despliegue
+const v = Date.now().toString(36);
 const fullTitle = title ? `${title} | ${site.name}` : site.title;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(image, Astro.site).href;
@@ -62,11 +64,11 @@ const organization = {
     <link rel="icon" href="/assets/media/brote-icono-32.png" sizes="32x32" />
     <link rel="icon" href="/assets/media/brote-icono-192.png" sizes="192x192" />
     <link rel="apple-touch-icon" href="/assets/media/brote-icono-180.png" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <link rel="stylesheet" href="/assets/css/slick.css" />
-    <link rel="stylesheet" href="/assets/css/theme.css" />
-    <link rel="stylesheet" href="/assets/css/brote.css" />
+    <link rel="stylesheet" href={`/assets/css/style.css?v=${v}`} />
+    <link rel="stylesheet" href={`/assets/css/styles.css?v=${v}`} />
+    <link rel="stylesheet" href={`/assets/css/slick.css?v=${v}`} />
+    <link rel="stylesheet" href={`/assets/css/theme.css?v=${v}`} />
+    <link rel="stylesheet" href={`/assets/css/brote.css?v=${v}`} />
     <script type="application/ld+json" set:html={JSON.stringify(organization)} />
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
   </head>
